@@ -11,6 +11,7 @@ let validation = {
 };
 
 const form = document.querySelector("form");
+const messgaeBox = document.querySelector("#message-box");
 const fullName = document.querySelector("#full-name");
 const email = document.querySelector("#email");
 const order_No = document.querySelector("#order-no");
@@ -90,10 +91,12 @@ function validateForm() {
 }
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
   const result = validateForm();
-  console.log(result);
-  isValid(result);
+  if (!isValid(result)) {
+    messgaeBox.textContent = 'Please fill all the fields!'
+  }
+  
+ 
 });
 
 fullName.addEventListener("change", validateForm);

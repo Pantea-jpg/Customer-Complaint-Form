@@ -13,6 +13,13 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/",(req,res)=>{
+    let email = req.body.email;
+    console.log(email);
+    
+})
+
+
 app.listen(app.get("port"), () => {
   console.log("Server started on http://localhost:" + app.get("port"));
 });
