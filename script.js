@@ -1,4 +1,3 @@
-
 let validation = {
   "full-name": true,
   email: true,
@@ -48,9 +47,8 @@ function validateForm() {
     ),
   );
   validation["complaints-group"] = checkedComplaints.length > 0;
-  complaints_group_fieldset.style.borderColor = validation["complaints-group"]
-    ? "green"
-    : "red";
+  complaints_group_fieldset.style.borderColor =
+    checkedComplaints.length > 0 ? "green" : "red";
   const values = checkedComplaints.map((box) => box.value);
 
   if (values.includes("other")) {
@@ -95,19 +93,22 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const result = validateForm();
   console.log(result);
+  isValid(result);
 });
 
-fullName.addEventListener("input", validateForm);
-email.addEventListener("input", validateForm);
-order_No.addEventListener("input", validateForm);
-product_Code.addEventListener("input", validateForm);
-quantity.addEventListener("input", validateForm);
-complaint_description.addEventListener("input", validateForm);
-solution_descrption.addEventListener("input", validateForm);
+fullName.addEventListener("change", validateForm);
+email.addEventListener("change", validateForm);
+order_No.addEventListener("change", validateForm);
+product_Code.addEventListener("change", validateForm);
+quantity.addEventListener("change", validateForm);
+complaints_group_fieldset.addEventListener("input", validateForm);
+solutions_group_fieldset.addEventListener("input", validateForm);
+complaint_description.addEventListener("change", validateForm);
+solution_descrption.addEventListener("change", validateForm);
 
-document
-  .querySelectorAll('#complaints-group input[name="complaint"]')
-  .forEach((cb) => cb.addEventListener("change", validateForm));
-document
-  .querySelectorAll('#solutions-group input[name="solutions"]')
-  .forEach((rb) => rb.addEventListener("change", validateForm));
+function isValid(object) {
+  if (Object.values(object).some((b) => !b)) {
+    return false;
+  }
+  return true;
+}
