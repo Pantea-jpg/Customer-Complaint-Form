@@ -102,7 +102,9 @@ order_No.addEventListener("change", validateForm);
 product_Code.addEventListener("change", validateForm);
 quantity.addEventListener("change", validateForm);
 complaints_group_fieldset.addEventListener("input", validateForm);
+complaints_group_fieldset.addEventListener("change", validateForm);
 solutions_group_fieldset.addEventListener("input", validateForm);
+solutions_group_fieldset.addEventListener("change", validateForm);
 complaint_description.addEventListener("change", validateForm);
 solution_descrption.addEventListener("change", validateForm);
 
